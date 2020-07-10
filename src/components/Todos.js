@@ -1,9 +1,8 @@
-/* eslint-disable linebreak-style */
 import React from 'react';
 
 const TodoItem = ({ todo, onToggle, onRemove }) => (
   <div>
-    <input type="checkbox" onClick={() => onToggle(todo.id)} defaultChecked={todo.done} />
+    <input type="checkbox" onChange={() => onToggle(todo.id)} defaultChecked={todo.done} />
     <span style={{ textDecoration: todo.done ? 'line-through' : 'none ' }}>
       {todo.text}
     </span>
@@ -26,13 +25,12 @@ const Todos = ({
   };
   const onChange = e => {
     e.preventDefault();
-    console.log(e.key);
     onChangeInput(e.target.value);
   };
   return (
     <div>
       <form onSubmit={onSubmit}>
-        <input value={input} onKeyDown={onChange} />
+        <input type="text" onChange={onChange} />
         <button type="submit">등록</button>
       </form>
       <div>
